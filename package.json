@@ -1,0 +1,18 @@
+{
+  "name": "com.unity.oas",
+  "version": "1.0.0",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "displayName": "Ordered Action Sequences",
+  "description": "Create sequences of custom, reusable code that run in order. Run directly from your code using an abstraction, avoiding repetitive calls to perform simple tasks.",
+  "keywords": [
+    "sequences",
+    "code"
+  ],
+  "licensesUrl": "https://github.com/nlinscott/OrderedActionSequences",
+  "documentationUrl": "https://github.com/nlinscott/OrderedActionSequences",
+  "author": {
+    "name": "Nic Linscott",
+    "url": "https://github.com/nlinscott"
+  }
+}
