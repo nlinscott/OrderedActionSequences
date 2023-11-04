@@ -2,7 +2,7 @@
 
 This was originally created to better coordinate powerful operations in perfect sequence. A good example is when a character goes out of bounds and needs to be reset. 
 
--The player's controls should be frozen, then 
+- The player's controls should be frozen, then 
 - the screen should fade to black.
 - While not visible, move the player to a safe position and adjust the camera angle.
 - Once thats finished, fade back in to view the player in the new position.
