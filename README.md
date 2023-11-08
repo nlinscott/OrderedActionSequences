@@ -10,6 +10,3 @@ This was originally created to better coordinate powerful operations in perfect 
 
 Thats a lot of very specific code to write for a very specific use case. Most of those things such as fading the camera to black, positioning the player and toggling controls will almost certainly be used elsewhere. 
 Rather than creating complicated controllers to do these specific action in every one-off use case, you can create this abstract "sequence" that is "run". The controller doesnt need to know all the details, just to run a sequence.
-
-### Configuration
-TODO
