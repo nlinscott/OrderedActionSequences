@@ -9,10 +9,10 @@
     "sequences",
     "code"
   ],
-  "licensesUrl": "https://github.com/nlinscott/OrderedActionSequences",
-  "documentationUrl": "https://github.com/nlinscott/OrderedActionSequences",
+  "licensesUrl": "https://github.com/nlinscott/OrderedActionSequences/blob/main/LICENSE.md",
+  "documentationUrl": "https://github.com/nlinscott/OrderedActionSequences/blob/main/Documentation/DOCS.md",
   "author": {
     "name": "Nic Linscott",
-    "url": "https://github.com/nlinscott"
+    "url": "https://github.com/nlinscott/OrderedActionSequences"
   }
 }
