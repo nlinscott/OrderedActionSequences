@@ -14,7 +14,7 @@
 3. IActionSequence
    - Implement this interface onto a MonoBehaviour to define what your sequence item will do
    - Add implementation as a component on the same GameObject as your `OrderedActionSequence`. Together, these make up a runnable item within your sequence.
-   - Warnings will be issues if an implementation is not present, as its required in order to run.
+   - Warnings will be issued if an implementation is not present, as its required in order to run.
 4. WaitForCompletionSource
    - At the core of all of these features lies the backbone that makes all of this work. This class will wait for a CompletionSource to be marked complete. Use CompletionSource in your code as needed as well as this class to wait for completion.
 5. Executors
@@ -50,11 +50,13 @@ Finally, create your `IActionSequence` implementation. Ideally, these implementa
 
 To run a sequence, you need to obtain a reference to an `OrderedActionSequenceBehaviour` or `SynchronousSequenceBehavior` and call the appropriate method to run it. This behaviour class acts as an abstraction. Your controller classes don't necessarily need to know about the sequence itself, and you can configure as many as necessary to define and set state, for example.
 
-> Sequnces run in the order you define Order IDs. In the editor, you assign these to arbitrary values as needed to ensure your objects run in the correct order. The order of the GameObject within the sequence is irrelevant. Its possible to have duplicated Order IDs. This means that two items will run in parallel. The next sequence item with a higher Order ID will not run until all actions for the previous Order ID are complete. 
+Sequnces run in the order you define Order IDs. In the editor, you assign these to arbitrary values as needed to ensure your objects run in the correct order. The order of the GameObject within the sequence is irrelevant.
+
+**Its possible to have duplicate Order IDs**. This means that two items will **run in parallel**. The next sequence item with a higher Order ID will not run until all actions for the previous Order ID are complete. 
 
 ## Architectural Notes
 
-As mentioned previously, the `OrderedActionSequenceBehaviour` and `SynchronousSequenceBehavior` can act as abstractions. For example, lets say you need to create controllers for enemies. Rather than creating a separate controller and write code for a bug enemy and a rat enemy separately, you can define states in terms of ordered action sequences. This way, you can reuse a controller that will set certain states when you need them set, but those states are no longer implementation specific. You can have one controller class for multiple enemies and design enemy systems around these reusable components for a cleaner game architecture.
+As mentioned previously, the `OrderedActionSequenceBehaviour` and `SynchronousSequenceBehavior` can act as abstractions. For example, lets say you need to create controllers for enemies. Rather than creating a separate controller and write code for a bug enemy and a rat enemy, you can define states in terms of ordered action sequences. This way, you can reuse a controller that will set certain states when you need them set, but those states are no longer implementation specific. You can have one controller class for multiple enemies and design enemy systems around these reusable components for a cleaner game architecture. This of course depends on how you implement your code entirely.
 
 ### Limitations of IActionSequence Implementations
 
