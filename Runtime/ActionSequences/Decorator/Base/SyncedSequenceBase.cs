@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.ActionSequences.Decorator.Base
 {
-    abstract class SyncedSequenceBase : SequenceBase
+    public abstract class SyncedSequenceBase : SequenceBase
     {
         protected SyncedSequence SequenceData
         {

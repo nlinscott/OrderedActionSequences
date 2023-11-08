@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    class TimedRepeatingSequence : RepeatingOrderedActionSequence
+    public class TimedRepeatingSequence : RepeatingOrderedActionSequence
     {
         [SerializeField]
         private float _repeatForSeconds;

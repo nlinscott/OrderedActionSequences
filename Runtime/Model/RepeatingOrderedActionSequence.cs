@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    abstract class RepeatingOrderedActionSequence : SequenceDataBase
+    public abstract class RepeatingOrderedActionSequence : SequenceDataBase
     {
         public float RepeatIntervalSeconds => _repeatIntervalSeconds;
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.Executors
 {
-    sealed class OrderedActionSequenceExecutor
+    internal sealed class OrderedActionSequenceExecutor
     {
         private readonly ISequenceDataExtractor _sequences;
         private readonly ISequenceRunner _runner;

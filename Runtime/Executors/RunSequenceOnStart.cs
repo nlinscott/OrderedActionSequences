@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.Executors
 {
-    internal sealed class RunSequenceOnStart : MonoBehaviour
+    public sealed class RunSequenceOnStart : MonoBehaviour
     {
         [SerializeField]
         private OrderedActionSequenceBehaviour _sequence;

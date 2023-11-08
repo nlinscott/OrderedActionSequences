@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    class OrderedActionSequence : SequenceDataBase
+    public class OrderedActionSequence : SequenceDataBase
     {
     }
 }

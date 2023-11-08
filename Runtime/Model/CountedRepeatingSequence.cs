@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    class CountedRepeatingSequence : RepeatingOrderedActionSequence
+    public class CountedRepeatingSequence : RepeatingOrderedActionSequence
     {
         [SerializeField]
         private int _repeatCount;

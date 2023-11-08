@@ -4,7 +4,7 @@ using UnityEngine;
 namespace OrderedActionSequences.Executors
 {
     [RequireComponent(typeof(SequenceRunner))]
-    class OrderedActionSequenceBehaviour : MonoBehaviour
+    public sealed class OrderedActionSequenceBehaviour : MonoBehaviour
     {
         private OrderedActionSequenceExecutor _executor;
 

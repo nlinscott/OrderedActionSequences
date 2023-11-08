@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    internal sealed class CancelCompletedSource : CompletionSource, ICancellationSource, ICancelToken
+    public sealed class CancelCompletedSource : CompletionSource, ICancellationSource, ICancelToken
     {
         private static readonly ICancelToken _neverCancelled = new CancelCompletedSource();
 

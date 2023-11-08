@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    interface ICompletionToken
+    public interface ICompletionToken
     {
         void MarkCompleted();
     }

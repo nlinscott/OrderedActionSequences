@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace OrderedActionSequences.ActionSequences.Decorator
 {
-    class CountedRepeatingActionSequence : RepeatingActionSequenceBase<CountedRepeatingSequence>
+    public class CountedRepeatingActionSequence : RepeatingActionSequenceBase<CountedRepeatingSequence>
     {
         private int _count = 0;
 

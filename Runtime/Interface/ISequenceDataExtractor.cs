@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace OrderedActionSequences
 {
-    interface ISequenceDataExtractor
+    internal interface ISequenceDataExtractor
     {
         ILookup<long, SequenceItem> ActionSequences { get; }
 

@@ -1,5 +1,4 @@
-﻿using OrderedActionSequences.ActionSequences.Base;
-using OrderedActionSequences.ActionSequences.Decorator;
+﻿using OrderedActionSequences.ActionSequences.Decorator;
 using OrderedActionSequences.ActionSequences.Decorator.Base;
 using OrderedActionSequences.Model;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences
 {
-    class SequenceDataExtractor : ISequenceDataExtractor
+    internal sealed class SequenceDataExtractor : ISequenceDataExtractor
     {
         public ILookup<long, SequenceItem> ActionSequences
         {

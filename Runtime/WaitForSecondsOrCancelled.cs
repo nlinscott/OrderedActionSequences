@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences
 {
-    internal static class Wait
+    public static class Wait
     {
         public static IEnumerator ForSecondsOrCancelled(float seconds, ICancelToken token)
         {

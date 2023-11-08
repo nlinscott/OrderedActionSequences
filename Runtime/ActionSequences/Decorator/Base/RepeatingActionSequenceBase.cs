@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.ActionSequences.Decorator.Base
 {
-    abstract class RepeatingActionSequenceBase<T> : RepeatingSequenceBase where T : RepeatingOrderedActionSequence
+    public abstract class RepeatingActionSequenceBase<T> : RepeatingSequenceBase where T : RepeatingOrderedActionSequence
     {
         protected T SequenceData
         {

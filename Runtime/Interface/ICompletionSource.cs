@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    internal interface ICompletionSource
+    public interface ICompletionSource
     {
         bool IsComplete
         {

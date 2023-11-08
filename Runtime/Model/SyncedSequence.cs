@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    class SyncedSequence : SequenceDataBase
+    public class SyncedSequence : SequenceDataBase
     {
         [SerializeField]
         private long _targetOrderID;

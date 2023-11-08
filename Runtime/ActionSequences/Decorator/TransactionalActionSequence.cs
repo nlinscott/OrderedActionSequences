@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.ActionSequences.Decorator
 {
-    sealed class TransactionalActionSequence : SyncedSequenceBase
+    public sealed class TransactionalActionSequence : SyncedSequenceBase
     {
         public override ICompletionSource OnEnd()
         {

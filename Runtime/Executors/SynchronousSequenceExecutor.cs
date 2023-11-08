@@ -3,55 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-sealed class SynchronousSequenceExecutor
+namespace OrderedActionSequences.Executors
 {
-    private readonly ISequenceDataExtractor _sequences;
-
-    public SynchronousSequenceExecutor(ISequenceDataExtractor sequences)
+    internal sealed class SynchronousSequenceExecutor
     {
-        _sequences = sequences;
-    }
+        private readonly ISequenceDataExtractor _sequences;
 
-    public void Execute()
-    {
-        if (!_sequences.DistinctSequences.Any())
+        public SynchronousSequenceExecutor(ISequenceDataExtractor sequences)
         {
-            Debug.Log($"Synchronous Ordered Action Sequence has no items to run.");
-            return;
+            _sequences = sequences;
         }
 
-        if (_sequences.SyncedSequences.Any())
+        public void Execute()
         {
-            Debug.Log($"Synchronous Ordered Action Sequence cannot have synced sequences as they will all be run synchronously.");
-            return;
-        }
-
-        if (_sequences.RepeatingSequences.Any())
-        {
-            Debug.Log($"Synchronous Ordered Action Sequence cannot have repeating sequences as they will all be run synchronously.");
-            return;
-        }
-
-        foreach (long orderID in _sequences.DistinctSequences)
-        {
-            IEnumerable<SequenceItem> seq = _sequences.ActionSequences[orderID];
-
-            foreach (SequenceItem seqItem in seq)
+            if (!_sequences.DistinctSequences.Any())
             {
-                VerifyCompletion(seqItem.Action.OnStart(), seqItem);
+                Debug.Log($"Synchronous Ordered Action Sequence has no items to run.");
+                return;
+            }
 
-                VerifyCompletion(seqItem.Action.OnEnd(), seqItem);
+            if (_sequences.SyncedSequences.Any())
+            {
+                Debug.Log($"Synchronous Ordered Action Sequence cannot have synced sequences as they will all be run synchronously.");
+                return;
+            }
+
+            if (_sequences.RepeatingSequences.Any())
+            {
+                Debug.Log($"Synchronous Ordered Action Sequence cannot have repeating sequences as they will all be run synchronously.");
+                return;
+            }
+
+            foreach (long orderID in _sequences.DistinctSequences)
+            {
+                IEnumerable<SequenceItem> seq = _sequences.ActionSequences[orderID];
+
+                foreach (SequenceItem seqItem in seq)
+                {
+                    VerifyCompletion(seqItem.Action.OnStart(), seqItem);
+
+                    VerifyCompletion(seqItem.Action.OnEnd(), seqItem);
+                }
             }
         }
-    }
 
-    private void VerifyCompletion(ICompletionSource src, SequenceItem item)
-    {
-        if (src.IsComplete)
+        private void VerifyCompletion(ICompletionSource src, SequenceItem item)
         {
-            return;
-        }
+            if (src.IsComplete)
+            {
+                return;
+            }
 
-        Debug.LogWarning($"{item.Action.GetType().Name} has not completed. Order ID: {item.Data.OrderID}");
+            Debug.LogWarning($"{item.Action.GetType().Name} has not completed. Order ID: {item.Data.OrderID}");
+        }
     }
 }

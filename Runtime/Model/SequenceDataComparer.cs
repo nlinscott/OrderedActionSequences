@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    class SequenceDataComparer : IEqualityComparer<IOrderedSequence>
+    internal sealed class SequenceDataComparer : IEqualityComparer<IOrderedSequence>
     {
         public bool Equals(IOrderedSequence x, IOrderedSequence y)
         {

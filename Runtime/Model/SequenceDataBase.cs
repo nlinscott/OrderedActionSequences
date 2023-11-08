@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Model
 {
-    abstract class SequenceDataBase : MonoBehaviour, IOrderedSequence
+    public abstract class SequenceDataBase : MonoBehaviour, IOrderedSequence
     {
         public long OrderID => _orderID;
 

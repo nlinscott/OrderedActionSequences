@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    internal interface ICancelToken : ICompletionToken
+    public interface ICancelToken : ICompletionToken
     {
         bool IsCancelled
         {

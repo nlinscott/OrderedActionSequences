@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.Executors
 {
-    class SyncOrderedActionSequenceBehaviour : MonoBehaviour
+    public sealed class SyncOrderedActionSequenceBehaviour : MonoBehaviour
     {
         private SynchronousSequenceExecutor _executor;
 

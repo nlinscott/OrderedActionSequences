@@ -2,7 +2,7 @@
 
 namespace OrderedActionSequences.Executors
 {
-    interface ISequenceRunner
+    internal interface ISequenceRunner
     {
         ICompletionSource Run(SequenceItem item);
     }

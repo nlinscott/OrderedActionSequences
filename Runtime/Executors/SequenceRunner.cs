@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.Executors
 {
-    class SequenceRunner : MonoBehaviour, ISequenceRunner
+    internal sealed class SequenceRunner : MonoBehaviour, ISequenceRunner
     {
         public ICompletionSource Run(SequenceItem item)
         {

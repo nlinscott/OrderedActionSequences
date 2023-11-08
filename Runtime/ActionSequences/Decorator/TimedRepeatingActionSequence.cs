@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.ActionSequences.Decorator
 {
-    class TimedRepeatingActionSequence : RepeatingActionSequenceBase<TimedRepeatingSequence>
+    public class TimedRepeatingActionSequence : RepeatingActionSequenceBase<TimedRepeatingSequence>
     {
         private int _repetitions = 0;
 

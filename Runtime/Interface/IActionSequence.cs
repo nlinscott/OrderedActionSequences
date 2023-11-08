@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    interface IActionSequence
+    public interface IActionSequence
     {
         ICompletionSource OnStart();
 

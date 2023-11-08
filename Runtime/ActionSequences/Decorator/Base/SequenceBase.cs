@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences.ActionSequences.Decorator.Base
 {
-    abstract class SequenceBase : MonoBehaviour, IActionSequence
+    public abstract class SequenceBase : MonoBehaviour, IActionSequence
     {
         protected IActionSequence _actiontoRepeat;
 

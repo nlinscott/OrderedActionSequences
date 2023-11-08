@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    interface IOrderedSequence
+    public interface IOrderedSequence
     {
         public long OrderID
         {

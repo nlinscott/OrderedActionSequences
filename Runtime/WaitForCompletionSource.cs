@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OrderedActionSequences
 {
-    internal sealed class WaitForCompletionSource 
+    public sealed class WaitForCompletionSource 
     {
         private readonly ICompletionSource _src;
 

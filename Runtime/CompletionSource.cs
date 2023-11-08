@@ -1,6 +1,6 @@
 ﻿namespace OrderedActionSequences
 {
-    internal class CompletionSource : ICompletionSource, ICompletionToken
+    public class CompletionSource : ICompletionSource, ICompletionToken
     {
         public static ICompletionSource Completed
         {

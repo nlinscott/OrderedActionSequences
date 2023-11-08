@@ -1,7 +1,7 @@
 ﻿
 namespace OrderedActionSequences
 {
-    internal interface ICancellationSource
+    public interface ICancellationSource
     {
         void Cancel();
     }
