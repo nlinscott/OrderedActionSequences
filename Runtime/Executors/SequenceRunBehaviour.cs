@@ -9,7 +9,7 @@ namespace OrderedActionSequences.Executors
     /// When running Coroutines, if the behaviour context where the coroutine was started is destroyed or disabled, the coroutine exectuion is stopped.
     /// 
     /// </summary>
-    internal sealed class SequenceRunBehaviour : MonoBehaviour
+    public sealed class SequenceRunBehaviour : MonoBehaviour
     {
         [SerializeField]
         private OrderedActionSequenceBehaviour _sequence;
