@@ -9,22 +9,31 @@ namespace OrderedActionSequences.Executors
         {
             CompletionSource src = new CompletionSource();
 
-            StartCoroutine(RunImpl(item, src));
+            Action run = () =>
+            {
+                ICompletionSource started = item.Action.OnStart();
+                src.Link(started);
+
+                src.MarkCompleted();
+            };
+
+            if (item.Data.StartDelaySeconds <= 0)
+            {
+                run();
+            }
+            else
+            {
+                StartCoroutine(RunWithDelay(item.Data.StartDelaySeconds, run));
+            }
 
             return src;
         }
 
-        private IEnumerator RunImpl(SequenceItem item, CompletionSource src)
+        private IEnumerator RunWithDelay(float delay, Action run)
         {
-            if(item.Data.StartDelaySeconds > 0)
-            {
-                yield return new WaitForSeconds(item.Data.StartDelaySeconds);
-            }
+            yield return new WaitForSeconds(delay);
 
-            ICompletionSource started = item.Action.OnStart();
-            src.Link(started);
-
-            src.MarkCompleted();
+            run();
         }
     }
 }

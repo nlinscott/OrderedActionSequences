@@ -11,13 +11,22 @@ namespace OrderedActionSequences.Executors
 
         private void Awake()
         {
-            _sequences = new SequenceDataExtractor(this.transform);
-            _executor = new SynchronousSequenceExecutor(_sequences);
+            EnsureInitialized();
         }
 
         public void RunSequence()
         {
+            EnsureInitialized();
             _executor.Execute();
+        }
+
+        private void EnsureInitialized()
+        {
+            if (_sequences == null || _executor == null)
+            {
+                _sequences = new SequenceDataExtractor(this.transform);
+                _executor = new SynchronousSequenceExecutor(_sequences);
+            }
         }
     }
 }
