@@ -8,5 +8,7 @@
         }
 
         void Link(ICompletionSource linkedSource);
+
+        ICompletionSource GetLinked();
     }
 }

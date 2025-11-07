@@ -1,33 +1,45 @@
-﻿using Moq;
-using NUnit.Framework;
-using OrderedActionSequences;
-
+﻿using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace OrderedActionSequences.Tests
 {
     class CompletionSourceExtensionMethodsTest
     {
-
         [Test]
-        public void LinkAll_EverythingLinked()
+        public void LinkAll_AllOriginalItemsAccountedFor()
         {
-            Mock<ICompletionSource> parentMock = new Mock<ICompletionSource>(MockBehavior.Strict);
+            CompletionSource parent1 = new CompletionSource();
+            CompletionSource child1 = new CompletionSource();
+            parent1.Link(child1);
 
-            Mock<ICompletionSource> mock1 = new Mock<ICompletionSource>(MockBehavior.Strict);
-            Mock<ICompletionSource> mock2 = new Mock<ICompletionSource>(MockBehavior.Strict);
-            Mock<ICompletionSource> mock3 = new Mock<ICompletionSource>(MockBehavior.Strict);
+            CompletionSource parent2 = new CompletionSource();
+            CompletionSource child2 = new CompletionSource();
+            parent2.Link(child2);
 
-            mock1.Setup(m => m.Link(mock2.Object)).Verifiable();
-            mock2.Setup(m => m.Link(mock3.Object)).Verifiable();
-            parentMock.Setup(m => m.Link(mock1.Object)).Verifiable();
+            CompletionSource root = new CompletionSource();
 
-            parentMock.Object.LinkAll(mock1.Object, mock2.Object, mock3.Object);
+            root.LinkAll(parent1, parent2);
 
-            mock1.Verify(m => m.Link(mock2.Object), Times.Once());
-            mock2.Verify(m => m.Link(mock3.Object), Times.Once());
-            parentMock.Verify(m => m.Link(mock1.Object), Times.Once());
+            List<ICompletionSource> sources = new List<ICompletionSource>
+            {
+                parent1, child1, parent2, child2
+            };
+
+            Assert.That(root.GetLinked(), Is.Not.Null);
+
+            ICompletionSource source = root;
+            int i = 0;
+            while (source.GetLinked() != null)
+            {
+                Assert.That(sources[i].Equals(source.GetLinked()));
+
+                source = source.GetLinked();
+
+                ++i;
+            }
+
+            Assert.That(i == sources.Count);
         }
-
 
         [Test]
         public void AllLinked_EverythingLinkedCorrectly_CompletedOutOfOrder()
@@ -46,11 +58,11 @@ namespace OrderedActionSequences.Tests
             Assert.False(parent.IsComplete);
 
             c3.MarkCompleted();
-           
+
             Assert.False(parent.IsComplete);
 
             c1.MarkCompleted();
-          
+
             Assert.False(parent.IsComplete);
 
             c2.MarkCompleted();

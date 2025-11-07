@@ -15,6 +15,16 @@ namespace Assets.Tests
         }
 
         [Test]
+        public void GetLinked_ReturnsCorrectInstance()
+        {
+            ICompletionSource c1 = CompletionSource.Completed;
+            ICompletionSource c2 = CompletionSource.Completed;
+            c1.Link(c2);
+
+            Assert.That(c1.GetLinked().Equals(c2));
+        }
+
+        [Test]
         public void CompletedToken_DistinctInstance_LinkSuccess()
         {
             ICompletionSource c1 = CompletionSource.Completed;

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace OrderedActionSequences
@@ -26,20 +25,35 @@ namespace OrderedActionSequences
             int itemsCount = others.Count();
 
             int i = 0;
-            while(i < itemsCount - 1)
+            while (i < itemsCount - 1)
             {
                 ICompletionSource item = others.ElementAt(i);
 
-                ICompletionSource toLink = others.ElementAt(++i);
+                ICompletionSource unlinked = item.FindUnlinkedItem();
 
-                item.Link(toLink);
+                ICompletionSource itemToLink = others.ElementAt(++i);
+
+                unlinked.Link(itemToLink);
             }
 
-            if(itemsCount != 0)
+            if (itemsCount != 0)
             {
                 start.Link(others.First());
             }
         }
 
+        private static ICompletionSource FindUnlinkedItem(this ICompletionSource source)
+        {
+            ICompletionSource parent = source;
+            ICompletionSource linked = parent.GetLinked();
+
+            while (linked != null)
+            {
+                parent = linked;
+                linked = parent.GetLinked();
+            }
+
+            return parent;
+        }
     }
 }

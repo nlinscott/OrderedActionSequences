@@ -1,7 +1,13 @@
-﻿namespace OrderedActionSequences
+﻿using System;
+
+namespace OrderedActionSequences
 {
     public class CompletionSource : ICompletionSource, ICompletionToken
     {
+#if UNITY_EDITOR
+
+        private readonly string _id = Guid.NewGuid().ToString();
+#endif
         public static ICompletionSource Completed
         {
             get
@@ -18,7 +24,7 @@
         {
             get
             {
-                if(_linkedSource != null)
+                if (_linkedSource != null)
                 {
                     return _isComplete && _linkedSource.IsComplete;
                 }
@@ -32,6 +38,11 @@
         public void Link(ICompletionSource linkedSource)
         {
             _linkedSource = linkedSource;
+        }
+
+        public ICompletionSource GetLinked()
+        {
+            return _linkedSource;
         }
 
         public void MarkCompleted()
